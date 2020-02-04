@@ -53,13 +53,13 @@ $result = mysqli_query($connection, $sql);
             <div class="form-group">
                 <label for="example-date-input" class="col-2 col-form-label">Date Come</label>
                 <div class="col-10">
-                    <input name="date_in" class="form-control" type="date" value="2020-02-20" id="example-date-input">
+                    <input name="date_in" class="form-control" type="date" value="2020-02-20" id="example-date-input" min="<?php echo Date('Y-m-d'); ?>" >
                 </div>
             </div>
             <div class="form-group">
                 <label for="example-date-input" class="col-2 col-form-label">Date Leave</label>
                 <div class="col-10">
-                    <input name="date_out" class="form-control" type="date" value="2020-02-22" id="example-date-input">
+                    <input name="date_out" class="form-control" type="date" value="2020-02-22" id="example-date-input" min="<?php echo Date('Y-m-d'); ?>">
                 </div>
             </div>
             <input type="submit" value="Submit">
