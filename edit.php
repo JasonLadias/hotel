@@ -38,11 +38,10 @@ $result = mysqli_query($connection, $sql);
     $username = $_SESSION['username'];
     $is_admin = $_SESSION['is_admin'];
     ?>    
-    <form action="/update.php" method="post">
     <p>Edit Room</p>
     <div class='container'>
     <div class='row'>
-    <form action="/update.php" method="get">
+    <form action="./update.php" method="get">
             <?php
             $sql = "Select id from room";
             $result = mysqli_query($connection, $sql);            
@@ -58,7 +57,7 @@ $result = mysqli_query($connection, $sql);
     <p>Delete Room</p>
     <div class='container'>
     <div class='row'>
-    <form action="/delete.php" method="get">
+    <form action="./delete.php" method="get">
             <?php
             $sql = "Select id from room";
             $result = mysqli_query($connection, $sql);            

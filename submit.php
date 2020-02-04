@@ -45,9 +45,9 @@ if ((isset($_POST['date_in']) && isset($_POST['date_out']) && isset($_POST['room
         
         $sql = "Insert into reservation (date_in,date_out,room_id,user_id,cost) values ('$date_in', '$date_out',$room_id,$user_id,$price)";
         if(mysqli_query($connection,$sql)){
-            header("Location: /success.php");
+            header("Location: /hotel/success.php");
         }else{
-            header("Location: /error.php");
+            header("Location: /hotel/error.php");
         }
     }else{
         header("Location: /error.php");

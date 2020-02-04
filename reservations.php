@@ -40,7 +40,7 @@ $result = mysqli_query($connection, $sql);
     $user_id = $_SESSION['user_id'];
     ?>
     <div class="container">
-        <form action="/submit.php" method="post">
+        <form action="./submit.php" method="post">
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Choose Room</label>
                 <select name="room_id" class="form-control" id="exampleFormControlSelect1">

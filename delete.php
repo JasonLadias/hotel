@@ -9,9 +9,9 @@ session_start();
 
     $sql = "DELETE FROM php_db.room where id=$room_id";
     if(mysqli_query($connection,$sql)){
-        header("Location: /success.php");
+        header("Location: /hotel/success.php");
     }else{
-        header("Location: /error.php");
+        header("Location: /hotel/error.php");
     }
     mysqli_close($connection);
 

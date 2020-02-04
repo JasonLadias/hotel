@@ -46,7 +46,7 @@ if (isset($_POST['username']) and isset($_POST['password'])) {
 mysqli_close($connection);
 //3.1.4 if the user is logged in Greets the user with message
 if (isset($_SESSION['username'])) {
-    header("Location: /home.php");
+    header("Location: /hotel/home.php");
 } else {
     //3.2 When the user visits the page first time, simple login form will be displayed.
 ?>
