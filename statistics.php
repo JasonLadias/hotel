@@ -1,11 +1,11 @@
 <?php
 session_start();
 $username = $_SESSION['username'];
-if($username === null){
+if ($username === null) {
     header('Location: ./logout.php');
 }
 $is_admin = $_SESSION['is_admin'];
-if($is_admin === 0){
+if ($is_admin === 0) {
     header('Location: ./home.php');
 }
 $connection = mysqli_connect('localhost', 'root', 'root', 'php_db');
@@ -43,26 +43,30 @@ $result = mysqli_query($connection, $sql);
     $user_id = $_SESSION['user_id'];
     ?>
     <div class="container">
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Date In</th>
-                <th>Date Out</th>
-                <th>Room ID</th>
-                <th>User ID</th>
-                <th>Date Out</th>
-            </tr>
+        <table class="table table-striped">
+            <thread>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Date In</th>
+                    <th scope="col">Date Out</th>
+                    <th scope="col">Room ID</th>
+                    <th scope="col">User ID</th>
+                    <th scope="col">Date Out</th>
+                </tr>
+            </thread>
+            <tbody>
             <?php while ($row = mysqli_fetch_row($result)) {
-                echo("<tr>");
-                echo ("<td>$row[0]</td>");
+                echo ("<tr>");
+                echo ("<th scope='row'>$row[0]</th>");
                 echo ("<td>$row[1]</td>");
                 echo ("<td>$row[2]</td>");
                 echo ("<td>$row[3]</td>");
                 echo ("<td>$row[4]</td>");
                 echo ("<td>$row[5]</td>");
-                echo("</tr>");
+                echo ("</tr>");
             }
             ?>
+            </tbody>
         </table>
     </div>
 </body>
