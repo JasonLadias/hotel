@@ -1,6 +1,14 @@
 <?php
 session_start();
 $connection = mysqli_connect('localhost', 'root', 'root', 'php_db');
+$username = $_SESSION['username'];
+if($username === null){
+    header('Location: ./logout.php');
+}
+$is_admin = $_SESSION['is_admin'];
+if($is_admin === 0){
+    header('Location: ./home.php');
+}
 if (!$connection) {
     die("Database Connection Failed" . mysqli_error($connection));
 }
@@ -36,19 +44,18 @@ $result = mysqli_query($connection, $sql);
     <?php
     include('navbar.php');
     $username = $_SESSION['username'];
-    $is_admin = $_SESSION['is_admin'];
     ?>    
     <p>Edit Room</p>
     <div class='container'>
     <div class='row'>
-    <form action="./update.php" method="get">
+    <form action="./update.php" method="post">
             <?php
             $sql = "Select id from room";
-            $result = mysqli_query($connection, $sql);            
+            $result = mysqli_query($connection, $sql);        
             while ($row = mysqli_fetch_row($result)) {
                 echo("<div class='column'>");
-                echo("<input type='radio' name='room_id' value='$row[0]'>$row[0]</input>");       
-                echo("</div>");                    
+                echo("<input type='radio' name='room_id' value='$row[0]' checked>$row[0]</input>");       
+                echo("</div>");                  
             }
             ?> 
       <input type="submit" value="Edit">

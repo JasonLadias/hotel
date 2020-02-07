@@ -1,5 +1,9 @@
 <?php
 session_start();
+$username = $_SESSION['username'];
+if($username === null){
+    header('Location: ./logout.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +28,7 @@ session_start();
     $user_id = $_SESSION['user_id'];
     ?>
 
-    <p>Your Reservation is successfully stored in the system</p>
+    <p>Your update was successful</p>
 </body>
 
 </html>

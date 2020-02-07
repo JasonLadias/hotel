@@ -16,25 +16,3 @@
       <a href="logout.php"><span class="fa fa-sign-out"></span>Logout</a>
     </div>
 </nav>
-
-
-
-<!--<nav class="navbar navbar-dark bg-dark">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="home.php">Jason's Hotel</a>
-    </div>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li><a href="home.php">Home</a></li>
-      <li><a href="rooms.php">Rooms</a></li>
-      <li><a href="#">Reservations</a></li>
-      <?php //echo(($_SESSION['is_admin'] == 1) ? ('<li><a href="#">Edit Room</a></li>') : null); ?>
-      <?php //echo(($_SESSION['is_admin'] == 1) ? ('<li><a href="#">Statistics</a></li>') : null); ?>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
-    </ul>
-    >/
-  </div>
-</nav>-->

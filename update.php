@@ -1,7 +1,16 @@
 <?php
 session_start();
+$username = $_SESSION['username'];
+if($username === null){
+    header('Location: ./logout.php');
+}
+$is_admin = $_SESSION['is_admin'];
+if($is_admin === 0){
+    header('Location: ./home.php');
+}
 
-$room_id = $_GET['room_id'];
+$room_id = filter_input(INPUT_POST, 'room_id', FILTER_SANITIZE_NUMBER_INT);
+
 $connection = mysqli_connect('localhost', 'root', 'root', 'php_db');
 if (!$connection) {
     die("Database Connection Failed" . mysqli_error($connection));
@@ -42,6 +51,9 @@ $result = mysqli_query($connection, $sql);
                 <input type='text' value='floor' disabled>
                 <br>
                 <?php
+                if($room_id===null){
+                    header("Location: ./edit.php");
+                }
                 while ($row = mysqli_fetch_row($result)) {
                     echo("<input type='number' name='id' value='$row[0]' readonly='readonly'>");
                     echo("<input type='number' name='beds' value='$row[1]'>");

@@ -1,5 +1,13 @@
 <?php 
 session_start();
+$username = $_SESSION['username'];
+if($username === null){
+    header('Location: ./logout.php');
+}
+$is_admin = $_SESSION['is_admin'];
+if($is_admin === 0){
+    header('Location: ./home.php');
+}
 
 if ((isset($_POST['date_in']) && isset($_POST['date_out']) && isset($_POST['room_id']))&&($_POST['date_in']<$_POST['date_out'])) {
     $room_id = filter_input(INPUT_POST, 'room_id', FILTER_SANITIZE_NUMBER_INT);
@@ -45,17 +53,17 @@ if ((isset($_POST['date_in']) && isset($_POST['date_out']) && isset($_POST['room
         
         $sql = "Insert into reservation (date_in,date_out,room_id,user_id,cost) values ('$date_in', '$date_out',$room_id,$user_id,$price)";
         if(mysqli_query($connection,$sql)){
-            header("Location: /hotel/success.php");
+            header("Location: ./success.php");
         }else{
-            header("Location: /hotel/error.php");
+            header("Location: ./error.php");
         }
     }else{
-        header("Location: /error.php");
+        header("Location: ./error.php");
     }
 
     mysqli_close($connection);
 }else{
-    header("Location: /error.php");
+    header("Location: ./error.php");
 }
 
 

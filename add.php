@@ -1,5 +1,13 @@
 <?php
 session_start();
+$username = $_SESSION['username'];
+if($username === null){
+    header('Location: ./logout.php');
+}
+$is_admin = $_SESSION['is_admin'];
+if($is_admin === 0){
+    header('Location: ./home.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +27,6 @@ session_start();
 <body>
     <?php
     include('navbar.php');
-    $username = $_SESSION['username'];
     $is_admin = $_SESSION['is_admin'];
     $user_id = $_SESSION['user_id'];
     ?>

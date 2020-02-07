@@ -1,5 +1,9 @@
 <?php
 session_start();
+$username = $_SESSION['username'];
+if($username === null){
+    header('Location: ./logout.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +28,7 @@ session_start();
     $user_id = $_SESSION['user_id'];
     ?>
 
-    <p>An error occurred</p>
+    <p>An error occured in your update</p>
 </body>
 
 </html>

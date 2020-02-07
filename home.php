@@ -1,5 +1,9 @@
 <?php
 session_start();
+$username = $_SESSION['username'];
+if($username === null){
+    header('Location: ./logout.php');
+}
 ?>
 
 <!DOCTYPE html>

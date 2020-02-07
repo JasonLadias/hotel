@@ -1,6 +1,10 @@
 <?php
 session_start();
 $connection = mysqli_connect('localhost', 'root', 'root', 'php_db');
+$username = $_SESSION['username'];
+if($username === null){
+    header('Location: ./logout.php');
+}
 if (!$connection) {
     die("Database Connection Failed" . mysqli_error($connection));
 }

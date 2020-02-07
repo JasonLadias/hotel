@@ -1,5 +1,13 @@
 <?php
 session_start();
+$username = $_SESSION['username'];
+if($username === null){
+    header('Location: ./logout.php');
+}
+$is_admin = $_SESSION['is_admin'];
+if($is_admin === 0){
+    header('Location: ./home.php');
+}
 $connection = mysqli_connect('localhost', 'root', 'root', 'php_db');
 if (!$connection) {
     die("Database Connection Failed" . mysqli_error($connection));
@@ -19,6 +27,7 @@ $result = mysqli_query($connection, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/4.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <title>Jason's Hotel</title>
