@@ -51,12 +51,28 @@ if ((isset($_POST['date_in']) && isset($_POST['date_out']) && isset($_POST['room
         $price1 = mysqli_fetch_row($result);
         $price = $price1[0] * $days_stayed;
         
-        $sql = "Insert into reservation (date_in,date_out,room_id,user_id,cost) values ('$date_in', '$date_out',$room_id,$user_id,$price)";
+        $new_reservation = array($date_in,$date_out,$room_id,$user_id,$price);
+
+        if (empty($_SESSION['cart'])){
+            $_SESSION['cart'] = array($new_reservation);
+        }else{
+            foreach ($_SESSION['cart'] as $resarray) {
+                if(in_array($new_reservation[2],$resarray)){
+                    header("Location: ./error.php");
+                    exit();
+                }
+            }
+            array_push($_SESSION['cart'],$new_reservation);
+        }
+
+        header("Location: ./cartsuccess.php");
+
+        /*$sql = "Insert into reservation (date_in,date_out,room_id,user_id,cost) values ('$date_in', '$date_out',$room_id,$user_id,$price)";
         if(mysqli_query($connection,$sql)){
             header("Location: ./success.php");
         }else{
             header("Location: ./error.php");
-        }
+        }*/
     }else{
         header("Location: ./error.php");
     }

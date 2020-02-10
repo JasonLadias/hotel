@@ -51,7 +51,7 @@ $result = mysqli_query($connection, $sql);
                     <th scope="col">Date Out</th>
                     <th scope="col">Room ID</th>
                     <th scope="col">User ID</th>
-                    <th scope="col">Date Out</th>
+                    <th scope="col">Price</th>
                 </tr>
             </thread>
             <tbody>

@@ -8,6 +8,7 @@
       <a class="nav-item nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="rooms.php">Rooms</a>
       <a class="nav-item nav-link" href="reservations.php">Reservations</a>
+      <a class="nav-item nav-link" href="cart.php">Cart</a>
       <?php echo(($_SESSION['is_admin'] == 1) ? ('<a class="nav-item nav-link" href="edit.php">Edit Room</a>') : null); ?>
       <?php echo(($_SESSION['is_admin'] == 1) ? ('<a class="nav-item nav-link" href="statistics.php">Statistics</a>') : null); ?>
     </div>
